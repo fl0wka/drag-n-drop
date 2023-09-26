@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './assets/css/App.css';
 import Card from './components/common/card';
 import { CardData } from './types/types';
+import Navbar from './components/ui/navbar';
 
 function App() {
   const [cardList, setCardList] = useState<CardData[]>([
@@ -12,8 +13,11 @@ function App() {
   ]);
 
   return (
-    <div className="app">
-      <Card cardList={cardList} setCardList={setCardList} />
+    <div>
+      <Navbar />
+      <div className="main">
+        <Card cardList={cardList} setCardList={setCardList} />
+      </div>
     </div>
   );
 }

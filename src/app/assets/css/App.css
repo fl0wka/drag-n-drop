@@ -4,12 +4,54 @@
   box-sizing: border-box;
 }
 
-.app {
+body {
+  overflow-x: hidden;
+}
+
+.main {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #e7e7e7
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #333333;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.navbar .brand {
+  display: block;
+  padding: 0 24px;
+  font-size: 24px;
+}
+
+.nav li a {
+  padding: 24px;
+  display: block;
+}
+
+.nav a:hover,
+.nav a:focus,
+.nav .active {
+  background-color: #272727;
 }
 
 .card {
