@@ -1,22 +1,21 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar: FC = () => {
   return (
     <nav className="navbar">
-      <a className="brand" href="#">
-        DRAG and DROP
-      </a>
+      <div className="brand">DRAG and DROP</div>
       <ul className="nav">
         <li>
-          <a className="active" href="#">
+          <Link to="lesson1" className="active">
             lesson 1
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">lesson 2</a>
+          <Link to="lesson2">lesson 2</Link>
         </li>
         <li>
-          <a href="#">lesson 3</a>
+          <Link to="lesson3">lesson 3</Link>
         </li>
       </ul>
     </nav>
