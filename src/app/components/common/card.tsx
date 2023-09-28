@@ -1,10 +1,10 @@
 import { FC, DragEvent, useState } from 'react';
-import { CardProps, CardData } from '../../types/types';
+import { CardProps, ICardData } from '../../types/types';
 
 const Card: FC<CardProps> = ({ cardList, setCardList }) => {
-  const [currentCard, setCurrentCard] = useState<CardData | null>(null);
+  const [currentCard, setCurrentCard] = useState<ICardData | null>(null);
 
-  function dragStartHandler(e: DragEvent<HTMLDivElement>, item: CardData) {
+  function dragStartHandler(e: DragEvent<HTMLDivElement>, item: ICardData) {
     setCurrentCard(item);
   }
 
@@ -17,7 +17,7 @@ const Card: FC<CardProps> = ({ cardList, setCardList }) => {
     e.currentTarget.style.opacity = '25%';
   }
 
-  function dropHandler(e: DragEvent<HTMLDivElement>, item: CardData) {
+  function dropHandler(e: DragEvent<HTMLDivElement>, item: ICardData) {
     e.preventDefault();
     setCardList(
       cardList.map((i) => {
@@ -35,7 +35,7 @@ const Card: FC<CardProps> = ({ cardList, setCardList }) => {
     e.currentTarget.style.opacity = '100%';
   }
 
-  const sortCards = (a: CardData, b: CardData): number => {
+  const sortCards = (a: ICardData, b: ICardData): number => {
     if (a.order > b.order) {
       return 1;
     } else {

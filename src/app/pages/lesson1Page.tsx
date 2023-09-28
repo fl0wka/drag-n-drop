@@ -1,9 +1,9 @@
 import { useState, FC } from 'react';
 import Card from '../components/common/card';
-import { CardData } from '../types/types';
+import { ICardData } from '../types/types';
 
 const Lesson1Page: FC = () => {
-  const [cardList, setCardList] = useState<CardData[]>([
+  const [cardList, setCardList] = useState<ICardData[]>([
     { id: 1, order: 1, text: 'num 1', bgColor: 'red' },
     { id: 2, order: 2, text: 'num 2', bgColor: 'green' },
     { id: 3, order: 3, text: 'num 3', bgColor: 'orange' },
