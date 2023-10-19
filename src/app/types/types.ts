@@ -35,3 +35,13 @@ export interface BoardCardProps {
   board: IBoard;
   updateBoards: (board: IBoard, currentBoard: IBoard) => void;
 }
+
+export interface INavbarTitle {
+  link: string;
+  title: string;
+}
+
+export interface ButtonProps {
+  title: string;
+  link: string;
+}
