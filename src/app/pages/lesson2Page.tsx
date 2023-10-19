@@ -31,12 +31,31 @@ const Lesson2Page: FC = () => {
     },
   ]);
 
+  const updateBoards = (board: IBoard, currentBoard: IBoard): void => {
+    setBoards(
+      boards.map((b) => {
+        if (b.id === board.id) {
+          return board;
+        }
+        if (b.id === currentBoard.id) {
+          return currentBoard;
+        }
+        return b;
+      })
+    );
+  };
+
   return (
     <div className="container">
       {boards.map((board) => (
         <Board key={board.id} title={board.title}>
           {board.items.map((item) => (
-            <BoardCard key={item.id} item={item} board={board} />
+            <BoardCard
+              key={item.id}
+              item={item}
+              board={board}
+              updateBoards={updateBoards}
+            />
           ))}
         </Board>
       ))}

@@ -33,4 +33,5 @@ export interface BoardProps {
 export interface BoardCardProps {
   item: IBoardCard;
   board: IBoard;
+  updateBoards: (board: IBoard, currentBoard: IBoard) => void;
 }
