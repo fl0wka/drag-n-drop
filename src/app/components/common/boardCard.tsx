@@ -1,10 +1,15 @@
-import { FC, DragEvent, useState } from 'react';
+import { FC, DragEvent } from 'react';
 import { BoardCardProps, IBoard, IBoardCard } from '../../types/types';
 
-const BoardCard: FC<BoardCardProps> = ({ item, board, updateBoards }) => {
-  const [currentBoard, setCurrentBoard] = useState<IBoard | null>(null);
-  const [currentItem, setCurrentItem] = useState<IBoardCard | null>(null);
-
+const BoardCard: FC<BoardCardProps> = ({
+  item,
+  board,
+  currentBoard,
+  setCurrentBoard,
+  currentItem,
+  setCurrentItem,
+  updateBoards,
+}) => {
   function dragStartHandler(
     e: DragEvent<HTMLDivElement>,
     board: IBoard,
@@ -34,8 +39,6 @@ const BoardCard: FC<BoardCardProps> = ({ item, board, updateBoards }) => {
     e.currentTarget.style.boxShadow = 'none';
 
     if (currentBoard && currentItem) {
-      console.log('currentItem: ', currentItem);
-      console.log('currentBoard: ', currentBoard);
       const currentIndex = currentBoard.items.indexOf(currentItem);
       currentBoard.items.splice(currentIndex, 1);
       const dropIndex = board.items.indexOf(item);

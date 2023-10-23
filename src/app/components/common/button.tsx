@@ -4,9 +4,9 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 const Button: FC<ButtonProps> = ({ title, link }) => {
   const resolvedPath = useResolvedPath(link);
-  console.log(resolvedPath.pathname);
+  // console.log(resolvedPath.pathname);
   const isActive = useMatch({ path: resolvedPath.pathname });
-  console.log(isActive);
+  // console.log(isActive);
 
   return (
     <div className={`btn ${isActive ? 'active' : ''}`}>

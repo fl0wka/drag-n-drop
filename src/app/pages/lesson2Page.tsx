@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import Board from '../components/common/board';
-import { IBoard } from '../types/types';
+import { IBoard, IBoardCard } from '../types/types';
 import BoardCard from '../components/common/boardCard';
 
 const Lesson2Page: FC = () => {
@@ -30,6 +30,8 @@ const Lesson2Page: FC = () => {
       ],
     },
   ]);
+  const [currentBoard, setCurrentBoard] = useState<IBoard | null>(null);
+  const [currentItem, setCurrentItem] = useState<IBoardCard | null>(null);
 
   const updateBoards = (board: IBoard, currentBoard: IBoard): void => {
     setBoards(
@@ -54,6 +56,10 @@ const Lesson2Page: FC = () => {
               key={item.id}
               item={item}
               board={board}
+              currentBoard={currentBoard}
+              setCurrentBoard={setCurrentBoard}
+              currentItem={currentItem}
+              setCurrentItem={setCurrentItem}
               updateBoards={updateBoards}
             />
           ))}

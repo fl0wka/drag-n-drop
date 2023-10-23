@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction, ReactNode } from 'react';
+import type { Dispatch, SetStateAction, ReactNode, DragEvent } from 'react';
 
 /***** LESSON 1 *****/
 export interface CardProps {
@@ -33,6 +33,10 @@ export interface BoardProps {
 export interface BoardCardProps {
   item: IBoardCard;
   board: IBoard;
+  currentBoard: IBoard | null;
+  setCurrentBoard: Dispatch<SetStateAction<IBoard | null>>;
+  currentItem: IBoardCard | null;
+  setCurrentItem: Dispatch<SetStateAction<IBoardCard | null>>;
   updateBoards: (board: IBoard, currentBoard: IBoard) => void;
 }
 
