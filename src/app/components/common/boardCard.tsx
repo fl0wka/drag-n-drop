@@ -39,11 +39,36 @@ const BoardCard: FC<BoardCardProps> = ({
     e.currentTarget.style.boxShadow = 'none';
 
     if (currentBoard && currentItem) {
-      const currentIndex = currentBoard.items.indexOf(currentItem);
-      currentBoard.items.splice(currentIndex, 1);
-      const dropIndex = board.items.indexOf(item);
-      board.items.splice(dropIndex + 1, 0, currentItem);
-      updateBoards(board, currentBoard);
+      if (currentItem === item) {
+        return;
+      }
+
+      if (currentBoard === board) {
+        const currentIndex = currentBoard.items.indexOf(currentItem);
+        const copyCurrentBoard: IBoard = JSON.parse(
+          JSON.stringify(currentBoard)
+        );
+        copyCurrentBoard.items.splice(currentIndex, 1);
+        const dropIndex = currentBoard.items.indexOf(item);
+        copyCurrentBoard.items.splice(dropIndex, 0, currentItem);
+        const copyBoard: IBoard = JSON.parse(JSON.stringify(board));
+
+        copyBoard.items = copyCurrentBoard.items; // ???
+
+        updateBoards(copyBoard, copyCurrentBoard);
+      }
+
+      if (currentBoard !== board) {
+        const currentIndex = currentBoard.items.indexOf(currentItem);
+        const copyCurrentBoard: IBoard = JSON.parse(
+          JSON.stringify(currentBoard)
+        );
+        copyCurrentBoard.items.splice(currentIndex, 1);
+        const dropIndex = board.items.indexOf(item);
+        const copyBoard: IBoard = JSON.parse(JSON.stringify(board));
+        copyBoard.items.splice(dropIndex + 1, 0, currentItem);
+        updateBoards(copyBoard, copyCurrentBoard);
+      }
     }
   }
 
