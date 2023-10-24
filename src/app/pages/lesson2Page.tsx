@@ -9,24 +9,24 @@ const Lesson2Page: FC = () => {
       id: 1,
       title: 'Задача',
       items: [
-        { id: 1, title: 'Прослушать урок' },
-        { id: 2, title: 'Выполнить тестовое задание' },
+        { id: 1, title: 'ITEM 1' },
+        { id: 2, title: 'ITEM 2' },
       ],
     },
     {
       id: 2,
       title: 'В процессе',
       items: [
-        { id: 3, title: 'Решить задачу' },
-        { id: 4, title: 'Определить трудные моменты' },
+        { id: 3, title: 'ITEM 3' },
+        { id: 4, title: 'ITEM 4' },
       ],
     },
     {
       id: 3,
       title: 'Выполнено',
       items: [
-        { id: 5, title: 'Повторить пройденные темы' },
-        { id: 6, title: 'Сделать commit' },
+        { id: 5, title: 'ITEM 5' },
+        { id: 6, title: 'ITEM 6' },
       ],
     },
   ]);
@@ -50,7 +50,14 @@ const Lesson2Page: FC = () => {
   return (
     <div className="container">
       {boards.map((board) => (
-        <Board key={board.id} title={board.title}>
+        <Board
+          key={board.id}
+          title={board.title}
+          board={board}
+          currentBoard={currentBoard}
+          currentItem={currentItem}
+          updateBoards={updateBoards}
+        >
           {board.items.map((item) => (
             <BoardCard
               key={item.id}

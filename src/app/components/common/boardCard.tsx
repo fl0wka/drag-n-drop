@@ -1,5 +1,7 @@
 import { FC, DragEvent } from 'react';
 import { BoardCardProps, IBoard, IBoardCard } from '../../types/types';
+import { copyItem } from '../../utils/copyItem';
+import { deleteElementOfArray } from '../../utils/deleteElementOfArray';
 
 const BoardCard: FC<BoardCardProps> = ({
   item,
@@ -43,15 +45,14 @@ const BoardCard: FC<BoardCardProps> = ({
         return;
       }
 
+      const copyCurrentBoard: IBoard = copyItem(currentBoard);
+      const copyBoard: IBoard = copyItem(board);
+
       if (currentBoard === board) {
         const currentIndex = currentBoard.items.indexOf(currentItem);
-        const copyCurrentBoard: IBoard = JSON.parse(
-          JSON.stringify(currentBoard)
-        );
-        copyCurrentBoard.items.splice(currentIndex, 1);
+        deleteElementOfArray(copyCurrentBoard.items, currentIndex);
         const dropIndex = currentBoard.items.indexOf(item);
         copyCurrentBoard.items.splice(dropIndex, 0, currentItem);
-        const copyBoard: IBoard = JSON.parse(JSON.stringify(board));
 
         copyBoard.items = copyCurrentBoard.items; // ???
 
@@ -60,12 +61,8 @@ const BoardCard: FC<BoardCardProps> = ({
 
       if (currentBoard !== board) {
         const currentIndex = currentBoard.items.indexOf(currentItem);
-        const copyCurrentBoard: IBoard = JSON.parse(
-          JSON.stringify(currentBoard)
-        );
-        copyCurrentBoard.items.splice(currentIndex, 1);
+        deleteElementOfArray(copyCurrentBoard.items, currentIndex);
         const dropIndex = board.items.indexOf(item);
-        const copyBoard: IBoard = JSON.parse(JSON.stringify(board));
         copyBoard.items.splice(dropIndex + 1, 0, currentItem);
         updateBoards(copyBoard, copyCurrentBoard);
       }

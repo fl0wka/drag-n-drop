@@ -86,12 +86,12 @@ body {
 
 .board__item {
   width: 100%;
-  border: 2px solid;
+  border: 2px solid skyblue;
   padding: 10px;
   border-radius: 6px;
   margin: 5px 0;
   cursor: grab;
-  background-color: #fcfcf9;
+  background-color: #fcfcdd;
 }
 
 .drop-area {

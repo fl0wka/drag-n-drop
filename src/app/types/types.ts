@@ -28,6 +28,10 @@ export interface IBoard {
 export interface BoardProps {
   title: string;
   children: ReactNode;
+  board: IBoard;
+  currentBoard: IBoard | null;
+  currentItem: IBoardCard | null;
+  updateBoards: (board: IBoard, currentBoard: IBoard) => void;
 }
 
 export interface BoardCardProps {
